@@ -34,13 +34,12 @@ class Dog(Animal):
         print("Bark")
 
 class Cat(Animal):
-    def sound(self):
-        print("Meow")
+    pass
 
 d = Dog()
 c = Cat()
-d.sound()
-c.sound()
+d.sound() # bra
+c.sound() # some
 
 #4
 class Person:
