@@ -1,19 +1,21 @@
 import psycopg2
 import csv
 from config import load_config
+from connect import connect
 
 def execute_query(sql, params=None, fetch=False):
-    
-    config = load_config()
-    try:
-        with psycopg2.connect(**config) as conn:
-            with conn.cursor() as cur:
-                cur.execute(sql, params)
-                if fetch:
-                    return cur.fetchall()
-                conn.commit()
-    except Exception as e:
-        print(f"Ошибка при выполнении запроса: {e}")
+    conn = connect
+    cur = conn.cursore()
+    # config = load_config()
+    # try:
+    #     with psycopg2.connect(**config) as conn:
+    #         with conn.cursor() as cur:
+    #             cur.execute(sql, params)
+    #             if fetch:
+    #                 return cur.fetchall()
+    #             conn.commit()
+    # except Exception as e:
+    #     print(f"Ошибка при выполнении запроса: {e}")
  
 def insert_from_console():
     name = input("Введите имя: ")

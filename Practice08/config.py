@@ -1,22 +1,10 @@
 from configparser import ConfigParser
 
-config = {
-    "host": "localhost",
-    "database": "postgres",
-    "user": "postgres",
-    "password": "12345678"
-}
-
 def load_config(filename='database.ini', section='postgresql'):
     parser = ConfigParser()
     parser.read(filename, encoding='utf-8')
 
-    config = {
-        "host": "localhost",
-        "database": "postgres",
-        "user": "postgres",
-        "password": "12345678"
-    }
+    config = {}
     if parser.has_section(section):
         params = parser.items(section)
         for param in params:
@@ -29,4 +17,3 @@ def load_config(filename='database.ini', section='postgresql'):
 if __name__ == '__main__':
     config = load_config()
     print(config)
-    

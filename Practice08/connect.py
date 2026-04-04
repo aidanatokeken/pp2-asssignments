@@ -1,5 +1,5 @@
 import psycopg2
-from config import config
+from config import load_config
 
 def connect(config):
     """ Connect to the PostgreSQL database server """
@@ -13,6 +13,5 @@ def connect(config):
 
 
 if __name__ == '__main__':
-    config = config()
+    config = load_config()
     connect(config)
-    
