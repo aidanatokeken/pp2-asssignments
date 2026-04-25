@@ -17,7 +17,7 @@ class MovingBall:
         self.x = self.WIDTH // 2
         self.y = self.HEIGHT // 2
 
-        self.speed = 50
+        self.speed = 20
 
     def move_up(self):
         if self.y - self.speed - self.radius >= 0:

@@ -18,7 +18,7 @@ class MickeyClock:
         self.center_x = self.WIDTH // 2
         self.center_y = self.HEIGHT // 2
 
-        clock_path = os.path.join("images", "clock.png")
+        clock_path = os.path.join("./images", "clock.png")
         self.clock_image = pygame.image.load(clock_path).convert_alpha()
         self.clock_image = pygame.transform.scale(self.clock_image, (700, 700))
         self.image_rect = self.clock_image.get_rect(center=(self.center_x, self.center_y))
