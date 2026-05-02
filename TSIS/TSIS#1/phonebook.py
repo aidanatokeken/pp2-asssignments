@@ -19,7 +19,7 @@ def add_contact():
 
         # simple validation
         if len(birthday) != 10:
-            print("❌ Wrong date format! Use YYYY-MM-DD")
+            print("Wrong date format! Use YYYY-MM-DD")
             return
 
         cur.execute("""
@@ -28,10 +28,10 @@ def add_contact():
         """, (name, email, birthday))
 
         conn.commit()
-        print("✅ Contact added!")
+        print("Contact added!")
 
     except Exception as e:
-        print("❌ Error:", e)
+        print("Error:", e)
 
 
 # ---------------- SEARCH ----------------
@@ -56,7 +56,7 @@ def delete():
     """, (value, value))
 
     conn.commit()
-    print("❌ Deleted")
+    print("Deleted")
 
 
 # ---------------- ADD PHONE ----------------
@@ -78,15 +78,15 @@ def add_phone():
         """, (result[0], phone, ptype))
 
         conn.commit()
-        print("📞 Phone added")
+        print("Phone added")
     else:
-        print("❌ Contact not found")
+        print("Contact not found")
 
 
 # ---------------- MENU ----------------
 def menu():
     while True:
-        print("\n📱 PHONEBOOK MENU")
+        print("\nPHONEBOOK MENU")
         print("1. Show all")
         print("2. Add contact")
         print("3. Search")
@@ -113,11 +113,11 @@ def menu():
             add_phone()
 
         elif choice == "0":
-            print("Bye 👋")
+            print("Bye")
             break
 
         else:
-            print("❗ Invalid option")
+            print("Invalid option")
 
 
 menu()
