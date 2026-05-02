@@ -32,7 +32,7 @@ class MainMenu:
 
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
-                        # 👉 запускаем игру сразу после Enter
+                        # запускаем игру сразу после Enter
                         game = Game()
                         game.run(username if username else "Player")
                         return
