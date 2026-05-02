@@ -1,17 +1,11 @@
 import psycopg2
-from config import load_config
+from config import *
 
-def connect(config):
-    """ Connect to the PostgreSQL database server """
-    try:
-
-        with psycopg2.connect(**config) as conn:
-            print('Connected to the PostgreSQL server.')
-            return conn
-    except (psycopg2.DatabaseError, Exception) as error:
-        print(error)
-
-
-if __name__ == '__main__':
-    config = load_config()
-    connect(config)
+def get_connection():
+    return psycopg2.connect(
+        dbname=DB_NAME,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        host=DB_HOST,
+        port=DB_PORT
+    )

@@ -1,0 +1,13 @@
+WIDTH = 600
+HEIGHT = 600
+CELL = 20
+
+FPS = 10
+
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+GREEN = (0, 255, 0)
+BLUE = (0, 120, 255)
+RED = (200, 0, 0)
+DARK_RED = (120, 0, 0)
+YELLOW = (255, 255, 0)

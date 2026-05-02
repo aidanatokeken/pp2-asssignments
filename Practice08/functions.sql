@@ -1,28 +1,23 @@
-ALTER TABLE public.phonebook 
-ADD CONSTRAINT unique_first_name UNIQUE (first_name);
-
-
-
-CREATE OR REPLACE FUNCTION find_contacts(search_pattern TEXT)
-RETURNS TABLE (user_id INT, first_name VARCHAR, phone_number VARCHAR) AS $$
+CREATE OR REPLACE FUNCTION search_contacts(p TEXT)
+RETURNS TABLE(name TEXT, phone TEXT)
+AS $$
 BEGIN
     RETURN QUERY
-    SELECT p.user_id, p.first_name, p.phone_number 
-    FROM public.phonebook p
-    WHERE p.first_name ILIKE '%' || search_pattern || '%'
-       OR p.phone_number LIKE '%' || search_pattern || '%';
+    SELECT name, phone
+    FROM contacts
+    WHERE name ILIKE '%' || p || '%'
+       OR phone ILIKE '%' || p || '%';
 END;
 $$ LANGUAGE plpgsql;
 
-
-
-
-CREATE OR REPLACE FUNCTION get_phonebook_paged(p_limit INT, p_offset INT)
-RETURNS SETOF public.phonebook AS $$
+CREATE OR REPLACE FUNCTION get_contacts_paginated(lim INT, off INT)
+RETURNS TABLE(id INT, name TEXT, phone TEXT)
+AS $$
 BEGIN
     RETURN QUERY
-    SELECT * FROM public.phonebook
-    ORDER BY user_id ASC
-    LIMIT p_limit OFFSET p_offset;
+    SELECT id, name, phone
+    FROM contacts
+    ORDER BY id
+    LIMIT lim OFFSET off;
 END;
 $$ LANGUAGE plpgsql;
